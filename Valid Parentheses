@@ -1,0 +1,35 @@
+/*Objective: Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.*/
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    var open =[]
+    var check = true
+    var i=0
+    if(s.indexOf(')')==-1 && s.indexOf('}')==-1 && s.indexOf(']')==-1){
+        check = false
+    }else{
+        while (i<s.length&&check){
+            if(s[i]=='('||s[i]=='{'||s[i]=='['){
+                open.push(s[i])
+            }else if(
+                (s[i]==')'&&open[open.length-1]=='(')||
+                (s[i]=='}'&&open[open.length-1]=='{')||
+                (s[i]==']'&&open[open.length-1]=='[')
+            ){
+                open.pop()
+            }else{check =false}
+            i++
+        }
+    }
+    if(check&&open.length>0){check=false}
+    return check
+
+};
