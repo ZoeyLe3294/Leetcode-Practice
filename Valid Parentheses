@@ -31,5 +31,4 @@ var isValid = function(s) {
     }
     if(check&&open.length>0){check=false}
     return check
-
 };
